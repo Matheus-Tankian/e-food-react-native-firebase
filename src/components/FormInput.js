@@ -1,27 +1,23 @@
-import React from 'react';
-import { ImageBackground, Text, View, StyleSheet, Button, SafeAreaView, TouchableHighlight, TextInput, Image } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
 
-class FormInput extends React.Component {
+function FormInput(props) {
 
-    constructor(props) {
-        super(props);
-    }
+    const [password, setPassword] = useState(props.password);
 
-    render() {
-        return (
-            <View style={this.props.style}>
-                <Text style={styles.title}>{this.props.title}</Text>
-                <View style={styles.input}>
-                    <TextInput style={{ width: '90%' }} placeholder={this.props.holder} secureTextEntry={this.props.password} />
-                    {this.props.password &&
-                        <Image source={require('../../assets/eye.png')} style={{ width: 30, height: 30 }} />}
-                </View>
-
-
+    return (
+        <View style={props.style}>
+            <Text style={styles.title}>{props.title}</Text>
+            <View style={styles.input}>
+                <TextInput onChangeText={props.onChangeText} style={{ width: '90%' }} autoCapitalize='none' placeholder={props.holder} secureTextEntry={password} />
+                {props.password &&
+                    <TouchableOpacity onPressIn={() => setPassword(false)} onPressOut={() => setPassword(true)}>
+                        <Image source={require('../../assets/eye.png')} style={{ width: 30, height: 30 }} />
+                    </TouchableOpacity>
+                }
             </View>
-        );
-    }
-
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({

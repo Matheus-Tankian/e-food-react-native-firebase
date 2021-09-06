@@ -1,14 +1,15 @@
 
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import OnBoarding from './src/screens/OnBoarding';
 import { useFonts } from 'expo-font';
 import LogIn from './src/screens/LogIn';
-import Product from './src/screens/Product';
+import ProductDetails from './src/screens/ProductDetails';
+import ProductList from './src/screens/ProductList';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function App() {
-
 
   const [loaded] = useFonts({
     BebasNeue: require('./assets/fonts/BebasNeue-Regular.ttf'),
@@ -19,8 +20,52 @@ export default function App() {
     return null;
   }
 
+  const Stack = createNativeStackNavigator();
+
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: '#2FDBBC',
+      background: '#FFF',
+    },
+  };
+
   return (
-    <OnBoarding />
+    <NavigationContainer theme={MyTheme}>
+      <Stack.Navigator
+        initialRouteName="Welcome"
+        screenOptions={{
+          headerShown: false,
+          gestureEnabled: true,
+          headerStyle: {
+            backgroundColor: '#2FDBBC',
+          },
+          headerTintColor: '#000',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      >
+        <Stack.Screen
+          name="Welcome"
+          component={OnBoarding}
+        />
+        <Stack.Screen
+          name="LogIn"
+          component={LogIn}
+        />
+        <Stack.Screen
+          name="Home"
+          component={ProductList}
+        />
+        <Stack.Screen
+          name="Product"
+          component={ProductDetails}
+          options={{ headerShown: true }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

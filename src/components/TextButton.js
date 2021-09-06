@@ -1,20 +1,15 @@
 import React from 'react';
 import { ImageBackground, Text, View, StyleSheet, Button, SafeAreaView, TouchableHighlight } from 'react-native';
 
-class TextButton extends React.Component {
+function TextButton(props) {
 
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <TouchableHighlight style={styles.button} onPress={() => { this.props.onPress() }}>
-                <Text style={styles.text}>{this.props.title}</Text>
+    return (
+        <View style={props.style}>
+            <TouchableHighlight style={styles.button} onPress={() => { props.onPress() }}>
+                <Text style={styles.text}>{props.title}</Text>
             </TouchableHighlight>
-        );
-    }
-
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
