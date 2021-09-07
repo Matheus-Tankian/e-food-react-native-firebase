@@ -37,7 +37,7 @@ function ProductDetails({ route }) {
                     <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{product.subtitle}</Text>
                     <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{`${product.time} min`}</Text>
                 </View>
-                <Text style={[Styles.pageTitle, { fontSize: 15, marginTop: 25 }]}>DESCRIPTION</Text>
+                <Text style={[Styles.pageTitle, { fontSize: 15, marginTop: 25 }]}>DESCRIÇÃO</Text>
                 <Text style={[Styles.description, { color: '#A3A3A3' }]}>{product.description}</Text>
                 <View style={{ marginTop: 25, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <NumberInput onValueChanged={(value) => setQnt(value)} />
