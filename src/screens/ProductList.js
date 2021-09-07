@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Text, StyleSheet, SafeAreaView, FlatList, View, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, FlatList, View, ActivityIndicator, TouchableOpacity, Image } from 'react-native';
 import FormInput from '../components/FormInput';
 import ProductPreview from '../components/ProductPreview';
 import { db } from '../util/firebase';
 import { Product } from '../entity/Product';
+import { Styles } from '../components/Styles';
 
-
-function ProductList({ props, navigation }) {
+function ProductList({ navigation }) {
 
     const [products, setProducts] = useState(null);
     const [queryString, setQueryString] = useState('');
+    const [msg, setMsg] = useState('');
 
     useEffect(() => {
         let prodList = [];
@@ -24,11 +25,20 @@ function ProductList({ props, navigation }) {
         loadProds();
     }, []);
 
-    return (
-        <SafeAreaView style={styles.safeview} >
-            <FormInput title='SEARCH' onChangeText={setQueryString} />
-            <Text style={[styles.title, { fontSize: 12, marginTop: 30, marginBottom: 15 }]}>SEARCH RESULTS</Text>
+    function displayMsg(txt) {
+        setMsg(txt);
+    }
 
+    return (
+        <SafeAreaView style={[Styles.safeview, { justifyContent: 'flex-start' }]} >
+            <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 30 }}>
+                <FormInput title='SEARCH' onChangeText={setQueryString} />
+                <TouchableOpacity style={{ flex: 1, marginHorizontal: 5, }} onPress={() => navigation.navigate('Basket')}>
+                    <Image source={require('../../assets/basket.png')} style={{ width: 45, height: 45 }} />
+                </TouchableOpacity>
+            </View>
+            <Text style={{ textAlign: 'right', marginVertical: 15, color: '#F99928', fontSize: 15 }}>{msg}</Text>
+            <Text style={[Styles.pageTitle, { fontSize: 15, marginBottom: 15 }]}>SEARCH RESULTS</Text>
             {products != null ?
                 <FlatList
                     data={products.filter(p => p.name.toLowerCase().includes(queryString.toLowerCase()))}
@@ -37,7 +47,7 @@ function ProductList({ props, navigation }) {
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({ item }) =>
                         <TouchableOpacity onPress={() => navigation.navigate('Product', { product: item })}>
-                            <ProductPreview product={item} />
+                            <ProductPreview product={item} onAdd={displayMsg} />
                         </TouchableOpacity>
                     }
                 />
@@ -49,33 +59,5 @@ function ProductList({ props, navigation }) {
         </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    safeview: {
-        flex: 1,
-        margin: 20,
-        marginTop: 70,
-        marginBottom: 30,
-    },
-    title: {
-        fontFamily: 'BebasNeue',
-        fontSize: 36,
-        fontWeight: '400',
-    },
-    subtitle: {
-        fontFamily: 'Poppins',
-        fontSize: 15,
-        textAlign: 'right',
-        fontWeight: '400',
-        color: '#F99928',
-    },
-    description: {
-        fontFamily: 'Poppins',
-        fontSize: 14,
-        fontWeight: '500',
-        marginTop: 10,
-    },
-});
-
 
 export default ProductList;

@@ -1,74 +1,56 @@
-import React from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Image, TouchableHighlight, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { Text, View, SafeAreaView, Image } from 'react-native';
+import { AppContext } from '../components/AppContext';
 import NumberInput from '../components/NumberInput';
 import TextButton from '../components/TextButton';
+import { Styles } from '../components/Styles';
+import { ScrollView } from 'react-native-gesture-handler';
 
 function ProductDetails({ route }) {
 
     const { product } = route.params;
 
-    var qnt = 1;
+    const { basket, setBasket } = useContext(AppContext);
+
+    const [qnt, setQnt] = useState(1);
+    const [msg, setMsg] = useState('');
 
     function addBasket() {
-        console.log("addBasket");
-        console.log(qnt * 15);
-        //TODO 
+        let bsk = [];
+        for (let index = 0; index < qnt; index++) {
+            bsk.push(product);
+        }
+        setBasket(basket.concat(bsk));
+        setMsg('Produto adicionado na cesta.');
     }
 
     return (
         <View style={{ flex: 1, justifyContent: 'space-between' }}>
             <Image style={{ flex: 1 }} resizeMode='cover' source={{ uri: product.img }} />
-            <SafeAreaView style={styles.safeview} >
+            <SafeAreaView style={Styles.safeview} >
+                <Text style={{ textAlign: 'center', marginVertical: 5, color: '#F99928' }}>{msg}</Text>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                    <Text style={styles.title}>{product.name}</Text>
+                    <Text style={Styles.pageTitle}>{product.name}</Text>
                     <Image source={require('../../assets/clock.png')} style={{ width: 30, height: 30 }} />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={styles.subtitle}>{product.subtitle}</Text>
-                    <Text style={styles.subtitle}>{`${product.time} min`}</Text>
+                    <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{product.subtitle}</Text>
+                    <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{`${product.time} min`}</Text>
                 </View>
-                <Text style={[styles.title, { fontSize: 12, marginTop: 25 }]}>DESCRIPTION</Text>
-                <Text style={styles.description}>{product.description}</Text>
-                <View style={{ marginTop: 25, flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <NumberInput onValueChanged={(value) => qnt = value} />
+                <Text style={[Styles.pageTitle, { fontSize: 12, marginTop: 15 }]}>DESCRIPTION</Text>
+                <Text style={[Styles.description, { color: '#A3A3A3' }]}>{product.description}</Text>
+                <View style={{ marginTop: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <NumberInput onValueChanged={(value) => setQnt(value)} />
                     <View style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
-                        <Text style={[styles.title, { fontSize: 12 }]}>SUB TOTAL</Text>
-                        <Text style={[styles.title, { fontSize: 24, color: '#2FDBBC' }]}>{product.priceLabel}</Text>
+                        <Text style={[Styles.pageTitle, { fontSize: 15 }]}>SUB TOTAL</Text>
+                        <Text style={[Styles.pageTitle, { fontSize: 24, color: '#2FDBBC' }]}>{`R$ ${qnt * product.price},00`}</Text>
                     </View>
                 </View>
-                <TextButton style={{ marginTop: 25 }} title='ADD TO BASKET' onPress={addBasket} />
+                <TextButton style={{ marginTop: 15 }} title='ADD TO BASKET' onPress={addBasket} />
             </SafeAreaView>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    safeview: {
-        flex: 1,
-        margin: 20,
-        justifyContent: 'flex-end'
-    },
-    title: {
-        fontFamily: 'BebasNeue',
-        fontSize: 36,
-        fontWeight: '400',
-    },
-    subtitle: {
-        fontFamily: 'Poppins',
-        fontSize: 15,
-        textAlign: 'right',
-        fontWeight: '400',
-        color: '#F99928',
-    },
-    description: {
-        fontFamily: 'Poppins',
-        fontSize: 14,
-        fontWeight: '500',
-        marginTop: 10,
-        color: '#A3A3A3',
-    },
-});
-
 
 export default ProductDetails;

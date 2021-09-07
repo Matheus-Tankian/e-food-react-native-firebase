@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { ImageBackground, Text, View, StyleSheet, SafeAreaView } from 'react-native';
+import { ImageBackground, Text, View, SafeAreaView } from 'react-native';
 import TextButton from '../components/TextButton';
 import Title from '../components/Title';
+import { Styles } from '../components/Styles';
 
-function OnBoarding({ props, navigation }) {
+
+function OnBoarding({ navigation }) {
 
     const background = [require('../../assets/onboarding1.png'), require('../../assets/onboarding2.png'), require('../../assets/onboarding3.png')];
     const title1 = ['AWESOME', 'DELIVERED AT', 'GRAB THE'];
@@ -24,40 +26,17 @@ function OnBoarding({ props, navigation }) {
     return (
         <View style={{ flex: 1 }}>
             <ImageBackground source={background[pos]} resizeMode='cover' style={{ flex: 1 }}>
-                <SafeAreaView style={styles.safeview}>
+                <SafeAreaView style={Styles.safeview}>
                     <Title />
                     <View style={{ flex: 1 }} />
-                    <Text style={styles.title}>{title1[pos]}</Text>
-                    <Text style={styles.title}>{title2[pos]}</Text>
-                    <Text style={styles.subtitle}>{subtitle[pos]}</Text>
+                    <Text style={[Styles.pageTitle, { color: '#FFF' }]}>{title1[pos]}</Text>
+                    <Text style={[Styles.pageTitle, { color: '#FFF' }]}>{title2[pos]}</Text>
+                    <Text style={[Styles.pageSubtitle, { marginBottom: 50 }]}>{subtitle[pos]}</Text>
                     <TextButton title={buttonTitle[pos]} onPress={nextPage} />
                 </SafeAreaView>
             </ImageBackground>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    safeview: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        margin: 20,
-        marginBottom: 50
-    },
-    title: {
-        fontFamily: 'BebasNeue',
-        fontSize: 36,
-        fontWeight: '400',
-        color: '#FFF',
-    },
-    subtitle: {
-        fontFamily: 'Poppins',
-        fontSize: 15,
-        fontWeight: '400',
-        color: '#FFF',
-        marginBottom: 50
-    }
-});
-
 
 export default OnBoarding;

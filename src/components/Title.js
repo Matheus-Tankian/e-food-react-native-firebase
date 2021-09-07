@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
+import { Styles } from './Styles';
 
 class Title extends React.Component {
 
@@ -10,22 +11,12 @@ class Title extends React.Component {
     render() {
         return (
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
-                <Text style={styles.title}>FOOD-</Text>
-                <Text style={[styles.title, { color: '#2FDBBC' }]}>E</Text>
+                <Text style={Styles.logo}>FOOD-</Text>
+                <Text style={[Styles.logo, { color: '#2FDBBC' }]}>E</Text>
             </View>
         );
     }
 
 }
-
-const styles = StyleSheet.create({
-    title: {
-        fontFamily: 'BebasNeue',
-        fontSize: 18,
-        fontWeight: '400',
-        color: '#FFF',
-    },
-});
-
 
 export default Title;
