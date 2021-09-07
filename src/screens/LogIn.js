@@ -6,12 +6,11 @@ import TextButton from '../components/TextButton';
 import { auth } from '../util/firebase';
 import { Styles } from '../components/Styles';
 
-
 function LogIn({ navigation }) {
     const { setUser } = useContext(AppContext);
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');//teste@teste.com
+    const [password, setPassword] = useState('');//123456
     const [msg, setMsg] = useState(null);
 
     function authenticate() {
@@ -56,11 +55,11 @@ function LogIn({ navigation }) {
                 <View style={{ flex: 1 }} />
                 <Text style={{ textAlign: 'center', color: '#F99928' }}>{msg}</Text>
                 <FormInput title='E-MAIL' holder='seu@email.com' onChangeText={text => setEmail(text)} />
-                <FormInput style={{ marginTop: 25 }} title='PASSWORD' holder='Password' password={true} onChangeText={text => setPassword(text)} />
+                <FormInput style={{ marginTop: 25 }} title='SENHA' holder='Senha' password={true} onChangeText={text => setPassword(text)} />
                 <TouchableOpacity onPress={forgotPassword}>
-                    <Text style={{ color: '#A3A3A3', textAlign: 'right', marginVertical: 10 }}>Forgot Password</Text>
+                    <Text style={{ color: '#A3A3A3', textAlign: 'right', marginVertical: 10 }}>Esqueci a senha</Text>
                 </TouchableOpacity>
-                <TextButton style={{ marginTop: 30 }} title='LOGIN' onPress={authenticate} />
+                <TextButton style={{ marginTop: 30 }} title='ENTRAR' onPress={authenticate} />
             </SafeAreaView>
         </View>
     );

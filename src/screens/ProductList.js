@@ -32,13 +32,13 @@ function ProductList({ navigation }) {
     return (
         <SafeAreaView style={[Styles.safeview, { justifyContent: 'flex-start' }]} >
             <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 30 }}>
-                <FormInput title='SEARCH' onChangeText={setQueryString} />
+                <FormInput title='BUSCA' onChangeText={setQueryString} />
                 <TouchableOpacity style={{ flex: 1, marginHorizontal: 5, }} onPress={() => navigation.navigate('Basket')}>
                     <Image source={require('../../assets/basket.png')} style={{ width: 45, height: 45 }} />
                 </TouchableOpacity>
             </View>
             <Text style={{ textAlign: 'right', marginVertical: 15, color: '#F99928', fontSize: 15 }}>{msg}</Text>
-            <Text style={[Styles.pageTitle, { fontSize: 15, marginBottom: 15 }]}>SEARCH RESULTS</Text>
+            <Text style={[Styles.pageTitle, { fontSize: 15, marginBottom: 15 }]}>RESULTADOS</Text>
             {products != null ?
                 <FlatList
                     data={products.filter(p => p.name.toLowerCase().includes(queryString.toLowerCase()))}

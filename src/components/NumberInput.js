@@ -22,7 +22,7 @@ function NumberInput(props) {
 
     return (
         <View>
-            <Text style={Styles.title}>QUANTIDADE</Text>
+            <Text style={[Styles.pageTitle, { fontSize: 15 }]}>QUANTIDADE</Text>
             <View style={Styles.input}>
                 <Text style={Styles.number}>{quant}</Text>
                 <View style={{ flexDirection: 'row' }}>

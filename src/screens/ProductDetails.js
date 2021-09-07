@@ -4,7 +4,6 @@ import { AppContext } from '../components/AppContext';
 import NumberInput from '../components/NumberInput';
 import TextButton from '../components/TextButton';
 import { Styles } from '../components/Styles';
-import { ScrollView } from 'react-native-gesture-handler';
 
 function ProductDetails({ route }) {
 
@@ -28,7 +27,7 @@ function ProductDetails({ route }) {
         <View style={{ flex: 1, justifyContent: 'space-between' }}>
             <Image style={{ flex: 1 }} resizeMode='cover' source={{ uri: product.img }} />
             <SafeAreaView style={Styles.safeview} >
-                <Text style={{ textAlign: 'center', marginVertical: 5, color: '#F99928' }}>{msg}</Text>
+                <Text style={{ textAlign: 'center', marginVertical: 10, color: '#F99928' }}>{msg}</Text>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                     <Text style={Styles.pageTitle}>{product.name}</Text>
@@ -38,9 +37,9 @@ function ProductDetails({ route }) {
                     <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{product.subtitle}</Text>
                     <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{`${product.time} min`}</Text>
                 </View>
-                <Text style={[Styles.pageTitle, { fontSize: 12, marginTop: 15 }]}>DESCRIPTION</Text>
+                <Text style={[Styles.pageTitle, { fontSize: 15, marginTop: 25 }]}>DESCRIPTION</Text>
                 <Text style={[Styles.description, { color: '#A3A3A3' }]}>{product.description}</Text>
-                <View style={{ marginTop: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ marginTop: 25, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <NumberInput onValueChanged={(value) => setQnt(value)} />
                     <View style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
                         <Text style={[Styles.pageTitle, { fontSize: 15 }]}>SUB TOTAL</Text>

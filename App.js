@@ -1,4 +1,3 @@
-
 import React from 'react';
 import OnBoarding from './src/screens/OnBoarding';
 import { useFonts } from 'expo-font';
@@ -70,13 +69,21 @@ export default function App() {
           <Stack.Screen
             name="Basket"
             component={Basket}
-            options={{ headerShown: true }}
+            options={{
+              headerShown: true,
+              title: 'Cesta de Compras',
+              headerBackTitle: 'Voltar'
+            }}
           />
 
           <Stack.Screen
             name="Product"
             component={ProductDetails}
-            options={{ headerShown: true }}
+            options={{
+              headerShown: true,
+              title: 'Detalhes',
+              headerBackTitle: 'Voltar',
+            }}
           />
         </Stack.Navigator>
       </AppProvider>

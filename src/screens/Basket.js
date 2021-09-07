@@ -63,7 +63,7 @@ function Basket({ navigation }) {
         <SafeAreaView style={Styles.safeview} >
             {(basket.length != 0) ?
                 <View style={{ flex: 1 }}>
-                    <Text style={Styles.pageTitle}>CESTA DE COMPRAS</Text>
+                    <Text style={Styles.pageTitle}>PEDIDO</Text>
                     <FlatList
                         data={basket}
                         keyExtractor={(item, index) => index.toString()}
