@@ -17,11 +17,9 @@ function ProductPreview(props) {
         <View style={Styles.card}>
             <View style={{ width: 170, height: 170 }}>
                 <Image style={{ width: 170, height: 170, borderRadius: 10 }} resizeMode='cover' source={{ uri: props.product.img }} />
-                <TouchableOpacity style={{ position: 'absolute', right: 10, bottom: 10, padding: 2, borderRadius: 5, backgroundColor: 'rgba(0,0,0,0.2)' }}>
-                    <Image source={require('../../assets/favorite.png')} style={{ width: 25, height: 25 }} />
-                </TouchableOpacity>
+               
             </View>
-            <Text style={Styles.title}>{props.product.name}</Text>
+            <Text style={Styles.title, {color:'#FFF', margin: 10}}>{props.product.name}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Text style={Styles.price}>{props.product.priceLabel}</Text>
                 <TouchableOpacity onPress={() => addToBasket()}>

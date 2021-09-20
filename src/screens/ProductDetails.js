@@ -26,27 +26,28 @@ function ProductDetails({ route }) {
     return (
         <View style={{ flex: 1, justifyContent: 'space-between' }}>
             <Image style={{ flex: 1 }} resizeMode='cover' source={{ uri: product.img }} />
-            <SafeAreaView style={Styles.safeview} >
-                <Text style={{ textAlign: 'center', marginVertical: 10, color: '#F99928' }}>{msg}</Text>
+            
+            <SafeAreaView style={Styles.safeview,{ margin: 10, marginBottom: 20}} >
+                <Text style={{ textAlign: 'center', marginVertical: 0, color: '#F99928' }}>{msg}</Text>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                     <Text style={Styles.pageTitle}>{product.name}</Text>
                     <Image source={require('../../assets/clock.png')} style={{ width: 30, height: 30 }} />
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{product.subtitle}</Text>
-                    <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#F99928' }]}>{`${product.time} min`}</Text>
+                    <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#000' }]}>{product.subtitle}</Text>
+                    <Text style={[Styles.pageSubtitle, { textAlign: 'right', color: '#000' }]}>{`${product.time} min`}</Text>
                 </View>
                 <Text style={[Styles.pageTitle, { fontSize: 15, marginTop: 25 }]}>DESCRIÇÃO</Text>
-                <Text style={[Styles.description, { color: '#A3A3A3' }]}>{product.description}</Text>
+                <Text style={[Styles.description, { color: '#000' }]}>{product.description}</Text>
                 <View style={{ marginTop: 25, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <NumberInput onValueChanged={(value) => setQnt(value)} />
                     <View style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
                         <Text style={[Styles.pageTitle, { fontSize: 15 }]}>SUB TOTAL</Text>
-                        <Text style={[Styles.pageTitle, { fontSize: 24, color: '#2FDBBC' }]}>{`R$ ${qnt * product.price},00`}</Text>
+                        <Text style={[Styles.pageTitle, { fontSize: 24, color: '#000' }]}>{`R$ ${qnt * product.price},00`}</Text>
                     </View>
                 </View>
-                <TextButton style={{ marginTop: 15 }} title='ADD TO BASKET' onPress={addBasket} />
+                <TextButton style={{ marginTop: 15}} title='ADD TO BASKET' onPress={addBasket} />
             </SafeAreaView>
         </View>
     );

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { ImageBackground, Text, View, SafeAreaView } from 'react-native';
-import TextButton from '../components/TextButton';
+import TextButton from '../components/TextButtonsOnBoard';
 import Title from '../components/Title';
 import { Styles } from '../components/Styles';
+import { auth } from '../util/firebase';
 
 
 function OnBoarding({ navigation }) {
 
-    const background = [require('../../assets/onboarding1.png'), require('../../assets/onboarding2.png'), require('../../assets/onboarding3.png')];
+    const background = [require('../../assets/chicken-leg.png'), require('../../assets/shipped.png'), require('../../assets/hamburguer.png')];
     const title1 = ['AWESOME', 'DELIVERED AT', 'GRAB THE'];
     const title2 = ['LOCAL FOOD', 'YOUR DOORSTEP', 'BEST DEALS AROUND'];
     const subtitle = ['Discover delicious food from the amazing restaurants near you', 'Fresh and delicious local food delivered from the restaurants to your doorstep', 'Grab the best deals and discounts around and save on your every order'];
@@ -25,7 +26,7 @@ function OnBoarding({ navigation }) {
 
     return (
         <View style={{ flex: 1 }}>
-            <ImageBackground source={background[pos]} resizeMode='cover' style={{ flex: 1 }}>
+            <ImageBackground source={background[pos]} resizeMode='center' style={{ flex: 1, backgroundColor: '#D35400'}}>
                 <SafeAreaView style={Styles.safeview}>
                     <Title />
                     <View style={{ flex: 1 }} />

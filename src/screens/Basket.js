@@ -71,7 +71,7 @@ function Basket({ navigation }) {
                     />
                     <View style={{ marginBottom: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                         <Text style={Styles.pageTitle}>TOTAL</Text>
-                        <Text style={[Styles.pageTitle, { color: '#2FDBBC' }]}>{`R$ ${total},00`}</Text>
+                        <Text style={[Styles.pageTitle, { color: '#000' }]}>{`R$ ${total},00`}</Text>
                     </View>
                     <TextButton title='COMPRAR'></TextButton>
                 </View>

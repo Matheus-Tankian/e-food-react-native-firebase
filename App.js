@@ -8,6 +8,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AppProvider } from './src/components/AppContext';
 import Basket from './src/screens/Basket';
+import AddLista from './src/screens/AddLista';
 
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      primary: '#2FDBBC',
+      primary: '#D35400',
       background: '#FFF',
     },
   };
@@ -42,9 +43,9 @@ export default function App() {
             headerShown: false,
             gestureEnabled: true,
             headerStyle: {
-              backgroundColor: '#2FDBBC',
+              backgroundColor: '#D35400',
             },
-            headerTintColor: '#000',
+            headerTintColor: '#FFF',
             headerTitleStyle: {
               fontWeight: 'bold',
             },
@@ -72,6 +73,16 @@ export default function App() {
             options={{
               headerShown: true,
               title: 'Cesta de Compras',
+              headerBackTitle: 'Voltar'
+            }}
+          />
+
+           <Stack.Screen
+            name="AddLista"
+            component={AddLista}
+            options={{
+              headerShown: true,
+              title: 'Adicione novos itens',
               headerBackTitle: 'Voltar'
             }}
           />

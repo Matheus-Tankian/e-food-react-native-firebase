@@ -11,11 +11,15 @@ export const Styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '400',
         color: '#FFF',
+    
     },
     pageTitle: {
         fontFamily: 'BebasNeue',
         fontSize: 36,
         fontWeight: '400',
+       
+        
+    
     },
     pageSubtitle: {
         fontFamily: 'Poppins',
@@ -36,12 +40,19 @@ export const Styles = StyleSheet.create({
     titleInput: {
         fontSize: 15,
         fontFamily: 'BebasNeue',
-        color: '#2FDBBC',
+        color: '#D35400',
         fontWeight: '400',
         marginLeft: 15
     },
     button: {
-        backgroundColor: '#2FDBBC',
+        backgroundColor: '#D35400',
+        borderRadius: 25,
+        justifyContent: 'center',
+        height: 40,
+        width: '100%'
+    },
+    buttonBoard: {
+        backgroundColor: '#FFF',
         borderRadius: 25,
         justifyContent: 'center',
         height: 40,
@@ -54,10 +65,17 @@ export const Styles = StyleSheet.create({
         fontWeight: '700',
         textAlign: 'center',
     },
+    textButtonBoard: {
+        fontSize: 21,
+        fontFamily: 'BebasNeue',
+        color: '#000',
+        fontWeight: '700',
+        textAlign: 'center',
+    },
     card: {
         width: 170,
         borderRadius: 10,
-        backgroundColor: '#FFF',
+        backgroundColor: '#D35400',
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -80,17 +98,19 @@ export const Styles = StyleSheet.create({
         fontWeight: '400',
         marginLeft: 10,
         width: 50,
+        
     },
     name: {
         fontFamily: 'BebasNeue',
         fontSize: 25,
         fontWeight: '400',
         marginHorizontal: 10,
+        
     },
     price: {
         fontFamily: 'BebasNeue',
         fontSize: 18,
-        color: '#2FDBBC',
+        color: '#FFF',
         fontWeight: '400',
         marginHorizontal: 10,
     },
@@ -99,13 +119,15 @@ export const Styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '500',
         marginTop: 10,
+        
     },
     remove: {
         marginLeft: 10,
         width: 30,
         height: 30,
         tintColor: '#FFF',
-        backgroundColor: '#2FDBBC',
+        backgroundColor: '#D35400',
         borderRadius: 5,
     },
 });
+

@@ -9,8 +9,8 @@ import { Styles } from '../components/Styles';
 function LogIn({ navigation }) {
     const { setUser } = useContext(AppContext);
 
-    const [email, setEmail] = useState('');//teste@teste.com
-    const [password, setPassword] = useState('');//123456
+    const [email, setEmail] = useState('vitorcruz8143@gmail.com');//teste@teste.com//vitorcruz8143@gmail.com
+    const [password, setPassword] = useState('123456');//123456
     const [msg, setMsg] = useState(null);
 
     function authenticate() {
@@ -56,9 +56,14 @@ function LogIn({ navigation }) {
                 <Text style={{ textAlign: 'center', color: '#F99928' }}>{msg}</Text>
                 <FormInput title='E-MAIL' holder='seu@email.com' onChangeText={text => setEmail(text)} />
                 <FormInput style={{ marginTop: 25 }} title='SENHA' holder='Senha' password={true} onChangeText={text => setPassword(text)} />
+                <View style={{flex: 0, flexDirection: 'row', justifyContent: 'space-between', marginTop:10}}>
                 <TouchableOpacity onPress={forgotPassword}>
-                    <Text style={{ color: '#A3A3A3', textAlign: 'right', marginVertical: 10 }}>Esqueci a senha</Text>
+                    <Text style={{ color: '#A3A3A3', textAlign: 'left'}}>Cadastro</Text>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={forgotPassword}>
+                    <Text style={{ color: '#A3A3A3', textAlign: 'right'}}>Esqueci a senha</Text>
+                </TouchableOpacity>
+                </View>
                 <TextButton style={{ marginTop: 30 }} title='ENTRAR' onPress={authenticate} />
             </SafeAreaView>
         </View>
